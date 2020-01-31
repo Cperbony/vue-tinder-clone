@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from '/src/store/store';
-import Home from '/src/views/Home.vue';
-import Login from '/src/views/Login.vue';
+import store from '../store/store';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
 
 Vue.use(Router);
 
@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
   store.dispatch("loadLocalAccount");
   let loggedIn = store.getters['isLoggedIn'];
 
-  if(authRequired && !loggedIn) {
+  if (authRequired && !loggedIn) {
     return next({
       path: '/login',
       query: { returnUrl: to.path }
